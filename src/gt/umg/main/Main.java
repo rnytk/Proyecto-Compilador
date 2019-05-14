@@ -5,11 +5,14 @@
  */
 package gt.umg.main;
 
+import gt.umg.editor.Editor;
+import javax.swing.JDialog;
+
 /**
  *
  * @author walte
  */
-public class Main extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {    
 
     /**
      * Creates new form Main
@@ -33,8 +36,9 @@ public class Main extends javax.swing.JFrame {
         divisor = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         Menubar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        editor = new javax.swing.JMenu();
+        abrir = new javax.swing.JMenuItem();
+        analisis = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -90,23 +94,61 @@ public class Main extends javax.swing.JFrame {
 
         Menubar.setBackground(new java.awt.Color(204, 52, 51));
 
-        jMenu1.setText("Editor");
-        Menubar.add(jMenu1);
+        editor.setText("Editor");
+        editor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editorActionPerformed(evt);
+            }
+        });
 
-        jMenu2.setText("Analisis");
+        abrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        abrir.setText("Abrir");
+        abrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirActionPerformed(evt);
+            }
+        });
+        editor.add(abrir);
 
+        Menubar.add(editor);
+
+        analisis.setText("Analisis");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Lexico");
-        jMenu2.add(jMenuItem1);
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        analisis.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Sintactico");
-        jMenu2.add(jMenuItem2);
+        analisis.add(jMenuItem2);
 
-        Menubar.add(jMenu2);
+        Menubar.add(analisis);
 
         setJMenuBar(Menubar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void editorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_editorActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
+        // TODO add your handling code here:
+        Editor editor = new Editor();        
+        editor.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_abrirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,11 +187,12 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menubar;
+    private javax.swing.JMenuItem abrir;
+    private javax.swing.JMenu analisis;
     private javax.swing.JSeparator divisor;
+    private javax.swing.JMenu editor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel subtitulo;
